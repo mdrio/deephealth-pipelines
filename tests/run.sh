@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+poetry shell
 ./create_env.sh
 source .env
 ./compose.sh up -d
@@ -12,6 +13,8 @@ while [ $running ]; do
 done
 
 cp -r tests/data/Mirax2-Fluorescence-2* $INPUT_DIR
+
+deactivate
 
 cd slide-importer
 poetry install
