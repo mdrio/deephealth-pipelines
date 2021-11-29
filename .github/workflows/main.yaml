@@ -24,8 +24,6 @@
       - name: install deps
         run: pip install poetry && poetry install
 
-      - name: echo compose
-        run: ./compose.sh ps
       - name: test
         run: tests/run.sh
 
