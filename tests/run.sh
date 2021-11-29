@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+cp -r tests/data/Mirax2-Fluorescence-2* $INPUT_DIR
+ls -la $INPUT_DIR
+
+
 poetry shell
 ./create_env.sh
 source .env
@@ -11,7 +15,6 @@ while [ $running ]; do
   sleep 5
   running=$(docker-compose ps --services --filter "status=running" | grep init)
 done
-cp -r tests/data/Mirax2-Fluorescence-2* $INPUT_DIR
 deactivate
 
 ./compose.sh ps
