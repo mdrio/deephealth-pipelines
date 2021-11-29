@@ -22,7 +22,7 @@
           python-version: '3.8' 
 
       - name: install deps
-        run: pip install poetry
+        run: pip install poetry && poetry install
 
       - name: test
         run: tests/run.sh
