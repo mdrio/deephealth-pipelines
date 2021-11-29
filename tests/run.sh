@@ -20,6 +20,7 @@ done
 deactivate
 
 ./compose.sh ps
+./compose.sh logs promort-web
 
 cd slide-importer
 poetry install
