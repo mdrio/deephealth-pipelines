@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 set -x
 
-cp -r tests/data/Mirax2-Fluorescence-2* $INPUT_DIR
-ls -la $INPUT_DIR
 
 
 poetry shell
 ./create_env.sh
 source .env
 ./compose.sh up -d
+
+cp -r tests/data/Mirax2-Fluorescence-2* $INPUT_DIR
+ls -la $INPUT_DIR
 
 running=$(docker-compose ps --services --filter "status=running" | grep init)
 while [ $running ]; do
