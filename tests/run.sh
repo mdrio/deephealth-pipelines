@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 
 cp -r tests/data/Mirax2-Fluorescence-2* $INPUT_DIR
 ls -la $INPUT_DIR
