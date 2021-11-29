@@ -149,7 +149,7 @@ class SlideImporter:
             instances = defaultdict(list)
             for t in instances_resp.json()["task_instances"]:
                 instances[t["state"]].append(t["task_id"])
-                if t["state"] == "failed":
+                if t["state"] in {"failed", "up_for_retry"}:
                     log_resp = requests.get(
                         os.path.join(
                             self.server_url,
