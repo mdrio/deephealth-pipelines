@@ -68,7 +68,7 @@ default_args = {
     "start_date": datetime(2019, 1, 1),
     "email_on_failure": False,
     "email_on_retry": False,
-    "retries": 1,
+    "retries": 0,
     "on_failure_callback": handle_error,
 }
 
