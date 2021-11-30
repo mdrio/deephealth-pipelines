@@ -169,6 +169,7 @@ class SlideImporter:
 
     def _iter_slides(self, slides: List[Path]) -> List[Path]:
         for slide in slides:
+            logger.info("slide.is_dir() %s", slide.is_dir())
             if not slide.is_dir():
                 yield slide
 
