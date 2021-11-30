@@ -21,7 +21,7 @@ done
 deactivate
 
 ./compose.sh ps
-./compose.sh logs promort-web
+./compose.sh logs omeseadragon
 
 cd slide-importer
 poetry install
