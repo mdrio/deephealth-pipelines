@@ -92,13 +92,11 @@ class SlideImporter:
         faiures = 0
         for slide in self._iter_slides(slides):
             logger.info("Processing slide %s", slide)
-            logger.info("slide.is_dir() %s", slide.is_dir())
-            if not slide.is_dir():
-                try:
-                    self._run_pipeline(slide, params)
-                except PipelineFailure as ex:
-                    logger.error(ex)
-                    faiures += 1
+            try:
+                self._run_pipeline(slide, params)
+            except PipelineFailure as ex:
+                logger.error(ex)
+                faiures += 1
         return faiures
 
     def _run_pipeline(self, slide: Path, params: Dict):
@@ -171,6 +169,7 @@ class SlideImporter:
 
     def _iter_slides(self, slides: List[Path]) -> List[Path]:
         for slide in slides:
+            logger.info("slide %s slide.is_dir() %s", slide.as_posix(), slide.is_dir())
             if not slide.is_dir():
                 yield slide
 
