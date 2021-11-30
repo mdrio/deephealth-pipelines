@@ -2,6 +2,10 @@
 set -x
 
 
+check_omeseadragon (){
+  docker run --network deephealth curlimages/curl $1
+  echo $?
+}
 
 poetry shell
 ./create_env.sh
@@ -20,8 +24,16 @@ while [ $running ]; do
 done
 deactivate
 
+ome_sedragon_status=$(check_omeseadragon $OME_SEADRAGON_URL)
+
+echo $ome_sedragon_status
+while [ $ome_sedragon_status -ne 0 ]; do
+  echo waiting for omeseadragon to be up and running
+  sleep 5
+  ome_sedragon_status=$(check_omeseadragon $OME_SEADRAGON_URL)
+done
+
 ./compose.sh ps
-./compose.sh logs -f omeseadragon
 
 cd slide-importer
 poetry install
