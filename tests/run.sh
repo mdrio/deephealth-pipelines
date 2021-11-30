@@ -5,6 +5,7 @@ set -x
 
 poetry shell
 ./create_env.sh
+cat promort_config/config.yaml
 source .env
 ./compose.sh up -d
 
