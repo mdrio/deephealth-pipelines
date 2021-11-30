@@ -21,7 +21,7 @@ done
 deactivate
 
 ./compose.sh ps
-./compose.sh logs omeseadragon
+./compose.sh logs -f omeseadragon
 
 cd slide-importer
 poetry install
