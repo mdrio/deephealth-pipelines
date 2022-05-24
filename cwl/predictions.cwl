@@ -20,7 +20,13 @@ inputs:
   tumor-filter: string
   tumor-batch-size: int?
 
-  gpu: int?
+  gpu:
+    type:
+        type: array
+        items: int
+        inputBinding:
+          prefix: --gpu=
+          separate: false
 
 outputs:
   tissue:
@@ -77,9 +83,12 @@ steps:
           inputBinding:
             prefix: -F
         gpu:
-          type: int?
-          inputBinding:
-            prefix: --gpu
+          type:
+              type: array
+              items: int
+              inputBinding:
+                prefix: --gpu=
+                separate: false
         chunk-size:
           type: int?
         batch-size:
@@ -162,9 +171,12 @@ steps:
           inputBinding:
             prefix: -F
         gpu:
-          type: int?
-          inputBinding:
-            prefix: --gpu
+          type:
+              type: array
+              items: int
+              inputBinding:
+                prefix: --gpu=
+                separate: false
         chunk-size:
           type: int?
         batch-size:
