@@ -13,6 +13,7 @@ airflow variables set BACKUP_DIR  $BACKUP_DIR
 airflow variables set OME_SEADRAGON_REGISTER_SLIDE $OME_SEADRAGON_URL/ome_seadragon/mirax/register_slide
 airflow variables set OME_SEADRAGON_REGISTER_PREDICTIONS $OME_SEADRAGON_URL/ome_seadragon/arrays/register_dataset
 airflow variables set OME_SEADRAGON_URL $OME_SEADRAGON_URL
+airflow variables set PROVENANCE 0
 
 airflow variables set PREDICTIONS_MODE 'serial'
 airflow variables set SERIAL_PREDICTIONS_PARAMS '{ "slide": { "class": "File", "path": null }, "tissue-low-level": 9, "tissue-low-label": "tissue_low", "tissue-high-level": 4,  "tissue-high-label": "tissue_high", "tissue-high-filter": "tissue_low>0.1",   "gpu": [0, 1], "tumor-level": 1, "tumor-label": "tumor", "tumor-filter": "tissue_low>0.8" }'

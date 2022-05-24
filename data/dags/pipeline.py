@@ -42,6 +42,7 @@ BACKUP_DIR = Variable.get("BACKUP_DIR")
 DOCKER_NETWORK = Variable.get("DOCKER_NETWORK", default_var="")
 
 PROMORT_TOOLS_IMG = Variable.get("PROMORT_TOOLS_IMG")
+PROVENANCE = bool(json.loads(Variable.get("PROVENANCE", default_var="0")))
 
 
 def handle_error(ctx):
@@ -91,7 +92,9 @@ def create_dag():
         dag_info = predictions()
         slide_to_promort >> dag_info
         report_dir = gather_report(dag_info)
-        generate_rocrate(report_dir)
+
+        if PROVENANCE:
+            generate_rocrate(report_dir)
 
         for prediction in Prediction:
             with TaskGroup(group_id=f"add_{prediction.value}_to_backend"):
@@ -272,7 +275,7 @@ def add_prediction_to_promort(
     ]
     if review_required:
         command.append("--review-required")
-    if report_dir:
+    if PROVENANCE and report_dir:
         provenance = docker_run(
             [
                 "-v",
