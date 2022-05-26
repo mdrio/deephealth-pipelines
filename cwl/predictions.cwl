@@ -35,6 +35,9 @@ outputs:
   tumor:
     type: File
     outputSource: classify-tumor/tumor
+  mask:
+    type: File
+    outputSource: extract-tissue-low/tissue
 
 steps:
   extract-tissue-low:
